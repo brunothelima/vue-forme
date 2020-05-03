@@ -1,28 +1,22 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="vue-forme">
+    <div class="component">
+      <component-example />
+    </div>
+    <div class="composable">
+      <composable-example />
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ComponentExample from "./components/ComponentExample.vue";
+import ComposableExample from "./components/ComposableExample.vue";
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld
+    ComponentExample,
+    ComposableExample
   }
-}
+};
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
