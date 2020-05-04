@@ -9,7 +9,7 @@ Component/Composable function combo, for easy form handling in vuejs projects. T
   - Sync/Async input event callback handling
   - Sync/Async data validation 
   
-## Using the <forme /> component:
+## Using the ```html <forme />``` component:
   The easiest way of start with forme is by using its <forme /> component. Symply import the component into your code and give it a :schema to work with.
   
   **MyCustomForm.vue**
@@ -97,7 +97,7 @@ export default schema;
 
 ## Using forme **createForme** and **useForme** functions:
 
-  Complex forms always brings up complex customizations. That can make it dificult to work with 3rd party libraries. **Forme** uses it's own composable function to handle the <Forme /> component, and you can easily use it too! 
+  Complex forms always brings up complex customizations. That can make it dificult to work with 3rd party libraries. **Forme** uses it's own composable function to handle the ```html<forme />``` component, and you can easily use it too! 
   
   With the **createForme** and **useForme** function, you can bring all forme's power to your own form component in the following way:
 
