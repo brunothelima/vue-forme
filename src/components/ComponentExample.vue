@@ -6,6 +6,7 @@
 
 <script>
 import Forme from "@/components/Forme";
+// File containing the form schema object
 import formeSchema from "@/formeSchema.js";
 
 export default {

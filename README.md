@@ -17,7 +17,7 @@ Form handling solution for vuejs projects, powered by vue3 composition api.
  <template>
   <forme :schema="formeSchema" @success="onSuccess">
     <button>Send</button>
-  </forme>
+  </forme>git 
 </template>
 
 <script>
@@ -77,19 +77,21 @@ export default schema;
    <div>
       <label>Username</label>
       <input type="text" name="username">
-      <!-- After validation fails:
-      <ul>
-        <li>This input is required</li>
-      </ul> -->
+      <!-- Errors
+        <ul>
+          <li>This input is required</li>
+        </ul> 
+      -->
    </div>
    <div>
       <label>Password</label>
       <input type="text" name="password">
-      <!-- After validation fails:
-      <ul>
-        <li>This input is required</li>
-        <li>This input must have 6 or more characters</li>
-      </ul> -->
+      <!-- Errors
+        <ul>
+          <li>This input is required</li>
+          <li>This input must have 6 or more characters</li>
+        </ul> 
+      -->
    </div>
    <button>Send</button>
 </form>
@@ -105,13 +107,14 @@ export default schema;
 <template>
   <form @submit.prevent="onSubmit">
     <label for>Username</label>
-    <input type="text" v-model="schema.username.value" /> <!-- Bind the schema object -->
-    <pre>{{schema.username.errors}}</pre> <!-- Detected errors array on validate() -->
+    <input type="text" v-model="username.value" /> <!-- Binding schema to the input -->
+    <pre v-if="username.errors.length">{{username.errors}}</pre>
     <button>Submit</button>
   </form>
 </template>
 
 <script>
+import { toRefs } from 'vue';
 import { useForme, createForme } from "vue-forme";
 import { required } from "vue-forme/validations";
 // 
@@ -127,9 +130,19 @@ export default {
     const { schema, data, validate } = useForme(formeSchema);
 
     const onSubmit = ev => {
-      const response = validate();
-      if (response) console.log('success', data.value);
+    
+      // Awaits for the validation result
+      const result = validate();
+      
+      if (!result) {
+        console.log('success', data.value);
+      }
     };
+
+    return {
+      onSubmit,
+      ...toRefs(schema)
+    }
   }
 };
 </script>

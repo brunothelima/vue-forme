@@ -1,59 +1,56 @@
 <template>
   <form @submit="onSubmit">
-    <div>data {{data}}</div>
-    <div>errors {{errors}}</div>
-    <br />
     <div>
       <label for>Username</label>
-      <input type="text" v-model="schema.username.value" />
-      <pre v-if="errors.username.length">{{errors.username}}</pre>
+      <input type="text" v-model="username.value" />
+      <pre v-if="username.errors.length">{{username.errors}}</pre>
     </div>
     <div>
       <label for>Password</label>
-      <input type="password" v-model="schema.password.value" />
-      <pre v-if="errors.password.length">{{errors.password}}</pre>
+      <input type="password" v-model="password.value" />
+      <pre v-if="password.errors.length">{{password.errors}}</pre>
     </div>
     <button>Send</button>
   </form>
 </template>
 
 <script>
+import { toRefs } from "vue";
 import { useForme, createForme } from "@/composables/useForme.js";
-import { required, minLength } from '@/lib/validators.js'
+import { required, minLength } from "@/lib/validators.js";
 
 const mySchema = createForme({
   username: {
-    validations: { 
-      required 
+    validations: {
+      required
     }
   },
   password: {
-    validations: { 
-      required: { ...required, message: "Custom message" },
-      minLength: minLength(6) 
+    validations: {
+      required,
+      minLength: minLength(6)
     }
   }
 });
 
 export default {
   setup() {
-    const { schema, data, errors, validate } = useForme(mySchema);
+    const { schema, data, validate } = useForme(mySchema);
 
     const onSubmit = async ev => {
       ev.preventDefault();
 
-      const denied = await validate();
-
-      if (!denied) {
-        console.log('success', data);
+      // Awaits for the validation result
+      const result = await validate();
+      
+      if (!result) {
+        console.log("success", data.value);
       }
     };
 
     return {
-      data,
-      schema,
-      errors,
-      onSubmit
+      onSubmit,
+      ...toRefs(schema)
     };
   }
 };

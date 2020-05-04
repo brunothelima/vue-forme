@@ -6,8 +6,6 @@
         :is="`input-${input.type}`"
         :value="input.value"
         :name="name"
-        @blur="onBlur"
-        @focus="onFocus"
         @input="onInput"
       />
       <ul v-if="input.errors.length">
@@ -33,50 +31,42 @@ export default {
     InputPassword
   },
   setup(props, context) {
-    const { schema, data, errors, validate } = useForme(props.schema);
-
-    const entries = computed(() => Object.entries(schema))
+    const { schema, data, validate } = useForme(props.schema);
     
-    const onBlur = ev => {
-      const { name } = ev.target;
+    const entries = computed(() => Object.entries(schema));
 
-      schema[name].onBlur && schema[name].onBlur(ev, schema);
-    };
-
-    const onFocus = ev => {
-      const { name } = ev.target;
-
-      schema[name].onFocus && schema[name].onFocus(ev, schema);
-    };
-
+    /**
+     * This function updates the schema with the new input value
+     * and calls onInput callback if one is given in the schema
+     */
     const onInput = ev => {
       const { name, value } = ev.target;
 
+      // Updating the schema input value 
       schema[name].value = value;
-
+      
+      // Checking and calling the event calback function
       schema[name].onInput && schema[name].onInput(ev, schema);
     };
 
     const onSubmit = async ev => {
       ev.preventDefault();
 
-      context.emit("submit", { ev, data });
+      context.emit("submit", { ev, data: data.value });
 
+      // Awaits for the validation result
       const result = await validate();
 
       if (!result) {
-        context.emit("success", { ev, data });
+        // Emiting success event if no error is found
+        context.emit("success", { ev, data: data.value });
       }
     };
 
     return {
-      onBlur,
-      onFocus,
       onInput,
       onSubmit,
-      entries,
-      errors,
-      data
+      entries
     };
   }
 };
