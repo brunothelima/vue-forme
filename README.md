@@ -1,5 +1,5 @@
 # vue-forme
-A vue3 solution for form handling built with vue3 composition api.
+Form handling solution for vuejs projects, built with vue3 composition api.
 
 ## Features:
   - Fast form ui development via ```<forme />``` component
