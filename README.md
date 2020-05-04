@@ -1,13 +1,11 @@
 # vue-forme
-A vue3 solution for forms via composable function and component combo, built with the new VCA
-
-Component/Composable function combo, for easy form handling in vuejs projects. This project is powered by the new vue componsition api, featured on vue3.
+A vue3 solution for form handling, built with vue3 composition api.
 
 ## Features:
-  - Fast form ui development via <forme /> component
-  - Open composable funcions for your own custom form component
+  - Fast form ui development via ```<forme />``` component
   - Sync/Async input event callback handling
   - Sync/Async data validation 
+  - Open composable functions for custom form components
   
 ## Using the ```<forme />``` component:
   The easiest way of start with forme is by using its ```<forme />``` component. Symply import the component into your code and give it a :schema to work with.
