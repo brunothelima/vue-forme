@@ -1,14 +1,18 @@
 # vue-forme
-A vue3 solution for form handling, built with vue3 composition api.
+A vue3 solution for form handling built with vue3 composition api.
 
 ## Features:
   - Fast form ui development via ```<forme />``` component
-  - Sync/Async input event callback handling
-  - Sync/Async data validation 
-  - Open composable functions for custom form components
+  - Input event callback handling
+   - Async callbacks
+   - Access to the schema reference
+  - Data validation
+    - Input async validation
+    - Custom validations support
+  - Open composable functions ```createForme``` and ```useForme``` for custom form components
   
-## Using the ```<forme />``` component:
-  The easiest way of start with forme is by using its ```<forme />``` component. Symply import the component into your code and give it a :schema to work with.
+## Basic usage with ```<forme />``` component:
+  The easiest way to start with forme is using the ```<forme />``` component. Symply import it into your code and give it a schema object to work with, like the example below.
   
   **MyCustomForm.vue**
   ```html
@@ -68,7 +72,7 @@ const schema = createForme({
 
 export default schema;
   ```
- This will generate the following form html:
+ This will generate the following html:
  
  ```html
  <form>
@@ -95,9 +99,9 @@ export default schema;
 
 ## Using ```createForme``` and ```useForme``` functions:
 
-  Complex forms always brings up complex customizations. That can make it dificult to work with 3rd party libraries. **Forme** uses it's own composable functions to handle the ```<forme />``` component, and you can easily use it too! 
+  Complex form ui's always brings up complex customizations. That can make it dificult to work with 3rd party libraries. **vue-forme** uses it's own composable functions to handle that inside the ```<forme />``` component, and you can easily use it on your own form components too! 
   
-  With the ```createForme``` and ```useForme``` function, you can bring all forme's power to your own form component in the following way:
+  With the ```createForme``` and ```useForme``` function, you can bring all forme's power to your own form, following the exemple below:
 
 ```html
 <template>
