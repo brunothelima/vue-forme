@@ -3,13 +3,13 @@ A vue3 solution for forms via composable function and component combo, built wit
 
 Component/Composable function combo, for easy form handling in vuejs projects. This project is powered by the new vue componsition api, featured on vue3.
 
-##### Features:
+## Features:
   - Fast form ui development via <forme /> component
   - Open composable funcions for your own custom form component
   - Sync/Async input event callback handling
   - Sync/Async data validation 
   
-##### Using the <forme /> component:
+## Using the <forme /> component:
   The easiest way of start with forme is by using its <forme /> component. Symply import the component into your code and give it a :schema to work with.
   
   **MyCustomForm.vue**
@@ -95,7 +95,7 @@ export default schema;
 </form>
  ```
 
-##### Using forme **createForme** and **useForme** functions:
+## Using forme **createForme** and **useForme** functions:
 
   Complex forms always brings up complex customizations. That can make it dificult to work with 3rd party libraries. **Forme** uses it's own composable function to handle the <Forme /> component, and you can easily use it too! 
   
