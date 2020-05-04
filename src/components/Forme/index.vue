@@ -1,13 +1,8 @@
 <template>
   <form @submit="onSubmit">
     <div v-for="[name, input] in entries" :key="name">
-      <label>{{input.label}}</label>
-      <component
-        :is="`input-${input.type}`"
-        :value="input.value"
-        :name="name"
-        @input="onInput"
-      />
+      <label v-if="input.label">{{input.label}}</label>
+      <component :is="`input-${input.type}`" :value="input.value" :name="name" @input="onInput" />
       <ul v-if="input.errors.length">
         <li v-for="error in input.errors" :key="error">{{error}}</li>
       </ul>
@@ -32,7 +27,7 @@ export default {
   },
   setup(props, context) {
     const { schema, data, validate } = useForme(props.schema);
-    
+
     const entries = computed(() => Object.entries(schema));
 
     /**
@@ -42,9 +37,9 @@ export default {
     const onInput = ev => {
       const { name, value } = ev.target;
 
-      // Updating the schema input value 
+      // Updating the schema input value
       schema[name].value = value;
-      
+
       // Checking and calling the event calback function
       schema[name].onInput && schema[name].onInput(ev, schema);
     };

@@ -3,12 +3,12 @@
     <div>
       <label for>Username</label>
       <input type="text" v-model="username.value" />
-      <pre v-if="username.errors.length">{{username.errors}}</pre>
+      {{username.errors}}
     </div>
     <div>
       <label for>Password</label>
       <input type="password" v-model="password.value" />
-      <pre v-if="password.errors.length">{{password.errors}}</pre>
+      {{passowrd.errors}}
     </div>
     <button>Send</button>
   </form>
@@ -40,9 +40,8 @@ export default {
     const onSubmit = async ev => {
       ev.preventDefault();
 
-      // Awaits for the validation result
       const result = await validate();
-      
+
       if (!result) {
         console.log("success", data.value);
       }

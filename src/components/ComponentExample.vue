@@ -1,13 +1,12 @@
 <template>
-  <forme :schema="formeSchema" @success="onSuccess">
+  <forme :schema="schema" @success="onSuccess">
     <button>Send</button>
   </forme>
 </template>
 
 <script>
 import Forme from "@/components/Forme";
-// File containing the form schema object
-import formeSchema from "@/formeSchema.js";
+import schema from "@/schemaExample.js";
 
 export default {
   components: {
@@ -19,7 +18,7 @@ export default {
     };
 
     return {
-      formeSchema,
+      schema,
       onSuccess
     };
   }
