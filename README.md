@@ -95,11 +95,11 @@ export default schema;
 </form>
  ```
 
-## Using forme **createForme** and **useForme** functions:
+## Using ```createForme``` and ```useForme``` functions:
 
-  Complex forms always brings up complex customizations. That can make it dificult to work with 3rd party libraries. **Forme** uses it's own composable function to handle the ```<forme />``` component, and you can easily use it too! 
+  Complex forms always brings up complex customizations. That can make it dificult to work with 3rd party libraries. **Forme** uses it's own composable functions to handle the ```<forme />``` component, and you can easily use it too! 
   
-  With the **createForme** and **useForme** function, you can bring all forme's power to your own form component in the following way:
+  With the ```createForme``` and ```useForme``` function, you can bring all forme's power to your own form component in the following way:
 
 ```html
 <template>
