@@ -10,7 +10,7 @@ Form handling solution for vuejs projects, powered by vue3 composition api.
   - Open composable functions ```createForme``` and ```useForme``` for custom form components
   
 ## Basic usage with ```<forme />``` component:
-  The easiest way to start with forme is using the ```<forme />``` component. Symply import it into your code and give it a schema object to work with, like the example below.
+  The easiest way to start with forme is by using it's ```<forme />``` component. Symply import it into your code and give it a schema object to work with, like in the example below.
   
   **MyCustomForm.vue**
   ```html
