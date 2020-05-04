@@ -1,32 +1,21 @@
-import { createForme } from "./composables/useForme.js";
+import { createForme } from "@/composables/useForme.js";
+import { required, minLength } from '@/lib/validators.js'
 
 const schema = createForme({
   username: {
     type: "text",
     label: "Username",
     validations: {
-      required: {
-        message: "This input is required",
-        handler: value => value != '' && value != null  && value != undefined,
-      },
-      // isUnique: {
-      //   message: "This username already exists",
-      //   handler: async (value) => {
-      //     const request = await fetch("./is-unique-username", { body: { value: value }});
-      //     return request.json();
-      //   }
-      // }
+      required,
     }
   },
   password: {
     type: "password",
     label: "Password",
-    // onInput: (ev, { username }) => {
-      // username.disabled = true        
-      // const response = await fetch("./async-value", { body: { value: ev.target.value }});
-      // username.value = await response.json();
-      // username.disabled = false
-    // }  
+    validations: {
+      required,
+      minLength: minLength(6)
+    }
   }
 });
 

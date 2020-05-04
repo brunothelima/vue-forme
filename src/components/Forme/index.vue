@@ -1,9 +1,6 @@
 <template>
   <form @submit="onSubmit">
-    <div>data {{data}}</div>
-    <div>errors {{errors}}</div>
-    <br />
-    <div v-for="[name, input] in Object.entries(schema)" :key="name">
+    <div v-for="[name, input] in entries" :key="name">
       <label>{{input.label}}</label>
       <component
         :is="`input-${input.type}`"
@@ -13,16 +10,19 @@
         @focus="onFocus"
         @input="onInput"
       />
-      <pre v-if="input.errors.length">{{input.errors}}</pre>
+      <ul v-if="input.errors.length">
+        <li v-for="error in input.errors" :key="error">{{error}}</li>
+      </ul>
     </div>
     <slot />
   </form>
 </template>
 
 <script>
-import { defineAsyncComponent } from "vue";
-import { useForme } from "../../composables/useForme.js";
+import { defineAsyncComponent, computed } from "vue";
+import { useForme } from "@/composables/useForme.js";
 
+// vue-forme ui components
 const InputText = defineAsyncComponent(() => import("./InputText.vue"));
 const InputPassword = defineAsyncComponent(() => import("./InputPassword.vue"));
 
@@ -35,6 +35,8 @@ export default {
   setup(props, context) {
     const { schema, data, errors, validate } = useForme(props.schema);
 
+    const entries = computed(() => Object.entries(schema))
+    
     const onBlur = ev => {
       const { name } = ev.target;
 
@@ -72,6 +74,7 @@ export default {
       onFocus,
       onInput,
       onSubmit,
+      entries,
       errors,
       data
     };

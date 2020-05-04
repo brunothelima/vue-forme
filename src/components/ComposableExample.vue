@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import { useForme, createForme } from "../composables/useForme.js";
-import { required, minLength } from '../validations.js'
+import { useForme, createForme } from "@/composables/useForme.js";
+import { required, minLength } from '@/lib/validators.js'
 
 const mySchema = createForme({
   username: {

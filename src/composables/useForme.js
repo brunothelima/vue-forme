@@ -2,7 +2,7 @@ import cloneDeep from 'lodash/cloneDeep';
 import { reactive, computed } from "vue";
 
 /**
- * Insures the given schema object has the correct shape.
+ * Clones the given schema and insures it has the correct structure
  */
 export const createForme = source => {
   let schema = cloneDeep(source);
@@ -14,32 +14,70 @@ export const createForme = source => {
 };
 
 export const useForme = source => {
+  // Reactive schema from the given schema
   const schema = reactive(source);
 
+  /** 
+   * Computed variable, containing a reduced object 
+   * with the given schema inputs names as keys and 
+   * the inputs current values as the keys values
+   * 
+   * Example:
+   * 
+   * console.log(data); 
+   * // { 
+   * //   name: 'My Name', 
+   * //   email: 'my@email.com', 
+   * //   ... 
+   * // }
+  */
   const data = computed(() => {
     return Object.keys(schema)
       .map(name => ({ [name]: schema[name].value || "" }))
       .reduce((prev, next) => ({ ...prev, ...next }));
   });
 
+  /** 
+   * Computed variable, containing a reduced object 
+   * with only the given schema inputs names as keys and
+   * and the inputs current errors array as their values
+   * 
+   * Example:
+   * 
+   * console.log(errors);
+   * // { 
+   * //   name: ['Required input', ...], 
+   * //   email: ['Invalid e-mail', ... ], 
+   * //   ... 
+   * // }
+  */
   const errors = computed(() => {
     return Object.keys(schema)
       .map(name => ({ [name]: schema[name].errors || [] }))
       .reduce((prev, next) => ({ ...prev, ...next }));
   });
 
+  /**
+   * This function iterates over each schema input, 
+   * validating their values with their own validators.
+   * 
+   * It also populates their errors array
+   * with all the failed validations messages.
+   * 
+   * After all validations are processed (sync/async), 
+   * a boolean is returned as the result:
+   * 
+   * no errors found => true 
+   * X errors found => false 
+   */
   const validate = async () => {
     for (let name in schema) {
-
-      if (!("validations" in schema[name])) {
-        continue;
-      }
-
-      const input = schema[name];
-      const { value, validations } = input;
-
-      input.errors = [];
-
+      let input = schema[name];
+      
+      let { value, validations } = input;
+      
+      input.errors = []; // Reseting the input errors array
+ 
       for (let key in validations) {
         let { handler, message } = validations[key];
 
@@ -50,7 +88,7 @@ export const useForme = source => {
         }
       }
     }
-
+    // Checks for any input that accused an error
     return !!Object.values(schema).some(input => input.errors.length > 0);
   };
 

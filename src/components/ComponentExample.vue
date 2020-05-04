@@ -5,8 +5,8 @@
 </template>
 
 <script>
-import Forme from "./Forme/Forme.vue";
-import formeSchema from "../formeSchema.js";
+import Forme from "@/components/Forme";
+import formeSchema from "@/formeSchema.js";
 
 export default {
   components: {

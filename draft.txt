@@ -1,0 +1,48 @@
+
+
+
+
+
+
+// Validation custom message example
+const schema2 = createForme({
+  username: {
+    // ...
+    validations: {
+      // ...
+      customValidation: { ...required, message: 'My custom message' },
+    }
+  }
+  // ...
+});
+
+// Async validation example
+const schema3 = createForme({
+  username: {
+    // ...
+    validations: {
+      // ...
+      isUnique: {
+        message: "This username already exists",
+        handler: async (value) => {
+          let request = await axios.post('@api/username-is-unique', { username: value });
+          return request.json();
+        }
+      }
+    }
+  }
+  // ...
+});
+
+
+// Input event handling handling
+const schema4 = createForme({
+  username: {
+    // ...
+    onInput: (ev, schema) => {
+      console.log(ev.target.value) // current input.value
+      console.log(schema) // reference to the reactive schema
+    }  
+  }
+  // ...
+});
