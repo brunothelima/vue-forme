@@ -3,11 +3,9 @@ Form handling solution for vuejs projects, powered by vue3 composition api.
 
 ## Features:
   - Fast form ui development via ```<forme />``` component
-  - Input event callback handling
-   - Async callbacks
-   - Access to the schema reference
+  - Input sync/async event callback handling
   - Data validation
-    - Input async validation
+    - Input value async validation support
     - Custom validations support
   - Open composable functions ```createForme``` and ```useForme``` for custom form components
   
