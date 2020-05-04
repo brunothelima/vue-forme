@@ -99,9 +99,9 @@ export default schema;
 
 ## Using ```createForme``` and ```useForme``` functions:
 
-  Complex form ui's always brings up complex customizations. That can make it dificult to work with 3rd party libraries. **vue-forme** uses it's own composable functions to handle that inside the ```<forme />``` component, and you can easily use it on your own form components too! 
+  Complex form ui's always brings up complex customizations and that can make it realy hard to work with 3rd party libraries. **vue-forme** uses it's own composable functions to handle that inside the ```<forme />``` component, and you can easily use it on your own form components too! 
   
-  With the ```createForme``` and ```useForme``` function, you can bring all forme's power to your own form, following the exemple below:
+  With ```createForme``` and ```useForme``` functions, you can bring all forme's power to your own form, by following the exemple below:
 
 ```html
 <template>
