@@ -1,5 +1,5 @@
-import { createForme } from "@/composables/useForme.js";
-import { required, minLength } from '@/lib/validators.js'
+import { createForme } from "@/composables/useForme";
+import { required, minLength } from '@/validators'
 
 const schema = createForme({
   username: {
