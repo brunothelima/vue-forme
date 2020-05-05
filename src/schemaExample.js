@@ -1,22 +1,48 @@
 import { createForme } from "@/composables/useForme.js";
-import { required, minLength } from '@/lib/validators.js'
+import { required } from "@/lib/validators.js";
 
 const schema = createForme({
-  username: {
+  inputText: {
     type: "text",
-    label: "Username",
-    validations: {
-      required,
-    }
+    label: "Text input",
+    validations: { required },
+    onInput: (ev, schema) => console.log(ev, schema)
   },
-  password: {
-    type: "password",
-    label: "Password",
-    validations: {
-      required,
-      minLength: minLength(6)
-    }
-  }
+  inputSelect: {
+    type: "select",
+    label: "Select input",
+    placeholder: "Select an option",
+    options: [
+      { value: 1, title: "First option" },
+      { value: 2, title: "Second option" },
+      { value: 3, title: "Third option" }
+    ],
+    validations: { required },
+    onInput: (ev, schema) => console.log(ev, schema)
+  },
+  inputRadio: {
+    type: "radio",
+    label: "Radio input",
+    options: [
+      { value: 1, title: "First option" },
+      { value: 2, title: "Second option" },
+      { value: 3, title: "Third option" }
+    ],
+    validations: { required },
+    onInput: (ev, schema) => console.log(ev, schema)
+  },
+  inputCheckbox: {
+    type: "checkbox",
+    label: "Checkbox input",
+    title: "Click check the box",
+    onInput: (ev, schema) => console.log(ev, schema)
+  },
+  inputTextarea: {
+    type: "textarea",
+    label: "Textarea input",
+    validations: { required },
+    onInput: (ev, schema) => console.log(ev, schema)
+  },
 });
 
 export default schema;

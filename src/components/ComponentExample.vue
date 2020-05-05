@@ -1,20 +1,21 @@
 <template>
-  <forme :schema="schema" @success="onSuccess">
+  <vue-forme :schema="schema" @success="onSuccess">
     <button>Send</button>
-  </forme>
+  </vue-forme>
 </template>
 
 <script>
 import Forme from "@/components/Forme";
+// Schemas can also be imported as .js files
 import schema from "@/schemaExample.js";
 
 export default {
   components: {
-    Forme
+    "vue-forme": Forme
   },
   setup() {
     const onSuccess = ({ ev, data }) => {
-      console.log(ev, data.value);
+      console.log(ev, data);
     };
 
     return {

@@ -8,7 +8,7 @@
     <div>
       <label for>Password</label>
       <input type="password" v-model="password.value" />
-      {{passowrd.errors}}
+      {{password.errors}}
     </div>
     <button>Send</button>
   </form>

@@ -5,5 +5,5 @@ export const required = {
 
 export const minLength = limit => ({
   message: `This input must have ${limit} or more characters`,
-  handler: value => value >= limit
+  handler: value => value.length >= limit
 });
