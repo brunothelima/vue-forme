@@ -92,8 +92,12 @@ export default {
       onInputHandler,
       onSubmitHandler,
       getComponentByType,
-      entries,
+      entries
     };
   }
 };
 </script>
+
+<style lang="scss">
+  @import "../../assets/theme.css";
+</style>
