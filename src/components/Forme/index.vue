@@ -1,12 +1,26 @@
 <template>
-  <form @submit="onSubmit">
-    <div v-for="[name, input] in entries" :key="name">
-      <label v-if="input.label">{{input.label}}</label>
-      <component :is="`input-${input.type}`" :value="input.value" :name="name" @input="onInput" />
-      <ul v-if="input.errors.length">
-        <li v-for="error in input.errors" :key="error">{{error}}</li>
-      </ul>
-    </div>
+  <form @submit="onSubmitHandler" class="forme">
+    {{data}}
+    <field
+      v-for="[name, input] in entries"
+      :key="input.name"
+      :id="`${name}Id`"
+      :label="input.label"
+      :errors="input.errors"
+    >
+      <component
+        :is="getComponentByType(input.type)"
+        :name="name"
+        :type="input.type"
+        :value="input.value"
+        :disabled="input.disabled"
+        :readonly="input.readonly"
+        :placeholder="input.placeholder"
+        :options="input.options"
+        :title="input.title"
+        @input="onInputHandler"
+      />
+    </field>
     <slot />
   </form>
 </template>
@@ -14,16 +28,22 @@
 <script>
 import { defineAsyncComponent, computed } from "vue";
 import { useForme } from "@/composables/useForme.js";
+import Field from "./Field";
 
 // vue-forme ui components
-const InputText = defineAsyncComponent(() => import("./InputText.vue"));
-const InputPassword = defineAsyncComponent(() => import("./InputPassword.vue"));
+const formeComponents = {
+  "input-text": defineAsyncComponent(() => import("./Input/Text")),
+  "input-select": defineAsyncComponent(() => import("./Input/Select")),
+  "input-radio": defineAsyncComponent(() => import("./Input/Radio")),
+  "input-checkbox": defineAsyncComponent(() => import("./Input/Checkbox")),
+  "input-textarea": defineAsyncComponent(() => import("./Input/Textarea"))
+};
 
 export default {
   props: ["schema"],
   components: {
-    InputText,
-    InputPassword
+    Field,
+    ...formeComponents
   },
   setup(props, context) {
     const { schema, data, validate } = useForme(props.schema);
@@ -31,10 +51,21 @@ export default {
     const entries = computed(() => Object.entries(schema));
 
     /**
+     * Checks if the ui has a matching component for the input type
+     * if not, returns an input-text as default.
+     */
+    const getComponentByType = type => {
+      let name = `input-${type}`;
+      return Object.keys(formeComponents).includes(name)
+        ? `input-${type}`
+        : "input-text";
+    };
+
+    /**
      * This function updates the schema with the new input value
      * and calls onInput callback if one is given in the schema
      */
-    const onInput = ev => {
+    const onInputHandler = ev => {
       const { name, value } = ev.target;
 
       // Updating the schema input value
@@ -44,7 +75,7 @@ export default {
       schema[name].onInput && schema[name].onInput(ev, schema);
     };
 
-    const onSubmit = async ev => {
+    const onSubmitHandler = async ev => {
       ev.preventDefault();
 
       context.emit("submit", { ev, data: data.value });
@@ -59,10 +90,16 @@ export default {
     };
 
     return {
-      onInput,
-      onSubmit,
-      entries
+      onInputHandler,
+      onSubmitHandler,
+      getComponentByType,
+      entries,
+      data
     };
   }
 };
 </script>
+
+<style lang="scss">
+  @import "../../assets/theme.css";
+</style>
