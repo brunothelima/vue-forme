@@ -1,5 +1,6 @@
 <template>
-  <form @submit="onSubmitHandler">
+  <form @submit="onSubmitHandler" class="forme">
+    {{data}}
     <field
       v-for="[name, input] in entries"
       :key="input.name"
@@ -92,7 +93,8 @@ export default {
       onInputHandler,
       onSubmitHandler,
       getComponentByType,
-      entries
+      entries,
+      data
     };
   }
 };

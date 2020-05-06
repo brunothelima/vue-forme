@@ -1,37 +1,28 @@
 /* Light Theme */
-:root {	
+.forme {	
 	/* Font props */
-	--font-size: 14px;
-	--font-family: "Montserrat", Arial, Helvetica, sans-serif;
-	--icons-family: "Widgricon";
-	/* Animation props */
-	--transition-duration: 200ms;
-	--transition-timing-function: ease-out;
-	/* Input props */
-	--input-border-width: 1px;
-  --input-border-style: solid;
-	--input-border-radius: 0.50em;
+	--forme-gutter: 16px;
+	
+	--forme-border-width: max(0.2vh, 1px);
+  --forme-border-style: solid;
+	--forme-border-radius: 0.50em;
+
 	/* System color props */
-	--color-info: #3B9DEA;
-	--color-error: #FA4646;
-	--color-warning: #DBC53D;
-	--color-success: #46CD72;
+	--forme-color-info: #3B9DEA;
+	--forme-color-error: #FA4646;
+	--forme-color-warning: #DBC53D;
+	--forme-color-success: #46CD72;
 	
 	/* Monochromatic color props */
-	--color-x-1: #171A1E;
-	--color-x-2: #22272C;
-	--color-x-3: #373E45;
-	--color-x-4: #5C636F;
-	--color-x-5: #768091;
-	--color-x-6: #8C95A3;
-	--color-x-7: #BABFC8;
-	--color-x-8: #E5E7EB;
-	--color-x-9: #F2F3F5;
-	--color-x-10: #F7F8F9;
-  --color-x-11: #FFFFFF;
-  
-  background-color: var(--color-x-11);
-  color: var(--color-x-1);
-  font-family: var(--font-family);
-  font-size: var(--font-size);
+	--forme-color-x-1: #171A1E;
+	--forme-color-x-2: #22272C;
+	--forme-color-x-3: #373E45;
+	--forme-color-x-4: #5C636F;
+	--forme-color-x-5: #768091;
+	--forme-color-x-6: #8C95A3;
+	--forme-color-x-7: #BABFC8;
+	--forme-color-x-8: #E5E7EB;
+	--forme-color-x-9: #F2F3F5;
+	--forme-color-x-10: #F7F8F9;
+  --forme-color-x-11: #FFFFFF;
 }

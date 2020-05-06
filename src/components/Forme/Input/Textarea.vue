@@ -17,29 +17,39 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .input-textarea {
   display: flex;
-  position: relative;
-  margin-bottom: 0.5rem;
-  textarea {
-    overflow: hidden;
-    box-sizing: border-box;
-    width: 100%;
-    min-height: 10em;
-    padding: 1em;
-    border-radius: var(--input-border-radius);
-    border: var(--input-border-width) var(--input-border-style) var(--color-x-8);
-    background-color: var(--color-x-11);
-    color: var(--color-x-3);
-    outline: none;
-    &::placeholder {
-      color: var(--color-x-7);
-    }
-    &:focus {
-      border-color: var(--color-x-4);
-      box-shadow: 0 0 0 var(--input-border-width) var(--color-x-4);
-    }
-  }
+  align-items: center;
+}
+textarea {
+  flex: 1;
+
+  height: 10em;
+  padding: 1em;
+  
+  box-sizing: border-box;
+  border-radius: var(--forme-border-radius);
+  border: 
+    var(--forme-border-width) 
+    var(--forme-border-style) 
+    var(--forme-color-x-8);
+
+  background-color: var(--forme-color-x-11);
+
+  font-size: 1em;
+  color: var(--forme-color-x-3);
+
+  appearance: none;
+  outline: none;
+}
+textarea:hover {
+  border-color: var(--forme-color-x-7);
+}
+textarea:focus {
+  border-color: var(--forme-color-x-4);
+}
+textarea::placeholder {
+  color: var(--forme-color-x-7);
 }
 </style>

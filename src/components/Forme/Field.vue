@@ -16,24 +16,21 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .field {
   display: flex;
   flex-flow: column;
   margin-bottom: 1em;
-  &__label {
-    margin: 0 0 0.5rem 1rem;
-    font-weight: 600;
-    &:empty {
-      display: none;
-    }
-  }
-  &__errors {
-    padding: 0;
-    margin: 0 1rem 0 1rem;
-    li {
-      margin-bottom: 0.5em;
-    }
-  }
+}
+.field__label {
+  margin: 0 0 0.5rem 1rem;
+  font-weight: 600;
+}
+.field__errors {
+  padding: 0;
+  margin: 0 1rem 0 1rem;
+}
+.field__errors li {
+  margin-bottom: 0.5em;
 }
 </style>

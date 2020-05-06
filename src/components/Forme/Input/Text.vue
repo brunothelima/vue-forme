@@ -18,26 +18,40 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .input-text {
   display: flex;
-  margin-bottom: 0.5rem;
-  input {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 1em;
-    border-radius: var(--input-border-radius);
-    border: var(--input-border-width) var(--input-border-style) var(--color-x-8);
-    background-color: var(--color-x-11);
-    color: var(--color-x-3);
-    outline: none;
-    &::placeholder {
-      color: var(--color-x-7);
-    }
-    &:focus {
-      border-color: var(--color-x-4);
-      box-shadow: 0 0 0 var(--input-border-width) var(--color-x-4);
-    }
-  }
+  align-items: center;
+}
+input {
+  flex: 1;
+
+  height: max(4vh, 3em);
+  padding: 0 1em;
+  
+  box-sizing: border-box;
+  border-radius: var(--forme-border-radius);
+  border: 
+    var(--forme-border-width) 
+    var(--forme-border-style) 
+    var(--forme-color-x-8);
+
+  background-color: var(--forme-color-x-11);
+
+  font-size: 1em;
+  line-height: 1.2em;
+  color: var(--forme-color-x-3);
+
+  appearance: none;
+  outline: none;
+}
+input:hover {
+  border-color: var(--forme-color-x-7);
+}
+input:focus {
+  border-color: var(--forme-color-x-4);
+}
+input::placeholder {
+  color: var(--forme-color-x-7);
 }
 </style>

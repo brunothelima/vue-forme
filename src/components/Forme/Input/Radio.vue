@@ -3,14 +3,14 @@
     <div v-for="(option, index) in options" :key="option">
       <input
         type="radio"
-        :id="`${name + index}Id`"
+        :id="`${name}Id:${index}`"
         :name="name"
         :value="option.value"
         :disabled="disabled"
         :readonly="readonly"
         :checked="option.value == value"
       />
-      <label :for="`${name + index}Id`">{{option.title}}</label>
+      <label :for="`${name}Id:${index}`">{{option.title}}</label>
     </div>
   </div>
 </template>

@@ -3,13 +3,13 @@
     <input
       type="checkbox"
       :name="name"
-      :id="`${name}BoxId`"
+      :id="`${name}Id:check`"
       :value="value"
       :disabled="disabled"
       :readonly="readonly"
       @input="$event.target.value = +$event.target.checked"
     />
-    <label :for="`${name}BoxId`">{{title}}</label>
+    <label :for="`${name}Id:check`">{{title}}</label>
   </div>
 </template>
 
