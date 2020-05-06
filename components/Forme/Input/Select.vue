@@ -53,7 +53,7 @@ export default {
 }
 .input-select::after {
   content: ' \25BE';
-  color: currentColor;
+  color: var(--forme-color-x-7);
 }
 .input-select:hover {
   border-color: var(--forme-color-x-7);

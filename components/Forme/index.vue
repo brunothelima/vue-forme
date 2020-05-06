@@ -12,16 +12,7 @@
       <component
         :is="getComponentByType(input.type)"
         :name="name"
-        :type="input.type"
-        :value="input.value"
-        :disabled="input.disabled"
-        :readonly="input.readonly"
-        :placeholder="input.placeholder"
-        :options="input.options"
-        :title="input.title"
-        :min="input.min"
-        :max="input.max"
-        :step="input.step"
+        v-bind="input"
         @input="onInputHandler"
       />
     </field>
@@ -61,8 +52,7 @@ export default {
      * if not, returns an input-text as default.
      */
     const getComponentByType = type => {
-      let name = `input-${type}`;
-      return Object.keys(formeComponents).includes(name)
+      return `input-${type}` in formeComponents
         ? `input-${type}`
         : "input-text";
     };
@@ -76,6 +66,7 @@ export default {
 
       // Updating the schema input value
       schema[name].value = value;
+      schema[name].errors = [];
 
       // Checking and calling the event calback function
       schema[name].onInput && schema[name].onInput(ev, schema);

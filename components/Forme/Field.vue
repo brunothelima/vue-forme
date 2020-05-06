@@ -27,10 +27,19 @@ export default {
   font-weight: 600;
 }
 .field__errors {
-  padding: 0;
-  margin: 0 1em 0 1em;
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  padding: 1em 0 0 1em;
+  margin: 0.5em 1em;
+  
+  border-bottom: var(--forme-border-width)  var(--forme-border-style) var(--forme-color-error);
+  border-left: var(--forme-border-width)  var(--forme-border-style) var(--forme-color-error);
+
+  border-bottom-left-radius: var(--forme-border-radius);
+  padding: 1em 2em;
 }
 .field__errors li {
-  margin-bottom: 0.5em;
+  margin: 0.25em 0;
 }
 </style>
