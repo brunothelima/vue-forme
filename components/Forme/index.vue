@@ -1,6 +1,7 @@
 <template>
   <form @submit="onSubmitHandler" class="forme">
-    {{data}}
+    <pre>data: {{data}}</pre>
+    <br />
     <field
       v-for="[name, input] in entries"
       :key="input.name"
@@ -18,6 +19,9 @@
         :placeholder="input.placeholder"
         :options="input.options"
         :title="input.title"
+        :min="input.min"
+        :max="input.max"
+        :step="input.step"
         @input="onInputHandler"
       />
     </field>
@@ -27,16 +31,18 @@
 
 <script>
 import { defineAsyncComponent, computed } from "vue";
-import { useForme } from "@/composables/useForme.js";
-import Field from "./Field";
+import { useForme } from "../../composables/useForme.js";
+import Field from "./Field.vue";
+import "../../assets/theme.css";
 
 // vue-forme ui components
 const formeComponents = {
-  "input-text": defineAsyncComponent(() => import("./Input/Text")),
-  "input-select": defineAsyncComponent(() => import("./Input/Select")),
-  "input-radio": defineAsyncComponent(() => import("./Input/Radio")),
-  "input-checkbox": defineAsyncComponent(() => import("./Input/Checkbox")),
-  "input-textarea": defineAsyncComponent(() => import("./Input/Textarea"))
+  "input-text": defineAsyncComponent(() => import("./Input/Text.vue")),
+  "input-select": defineAsyncComponent(() => import("./Input/Select.vue")),
+  "input-radio": defineAsyncComponent(() => import("./Input/Radio.vue")),
+  "input-checkbox": defineAsyncComponent(() => import("./Input/Checkbox.vue")),
+  "input-textarea": defineAsyncComponent(() => import("./Input/Textarea.vue")),
+  "input-range": defineAsyncComponent(() => import("./Input/Range.vue"))
 };
 
 export default {
@@ -99,7 +105,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss">
-  @import "../../assets/theme.css";
-</style>

@@ -23,12 +23,12 @@ export default {
   margin-bottom: 1em;
 }
 .field__label {
-  margin: 0 0 0.5rem 1rem;
+  margin: 0 0 0.75em 1em;
   font-weight: 600;
 }
 .field__errors {
   padding: 0;
-  margin: 0 1rem 0 1rem;
+  margin: 0 1em 0 1em;
 }
 .field__errors li {
   margin-bottom: 0.5em;

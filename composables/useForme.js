@@ -1,16 +1,14 @@
-import cloneDeep from 'lodash/cloneDeep';
 import { reactive, computed } from "vue";
 
 /**
  * Clones the given schema and insures it has the correct structure
  */
 export const createForme = source => {
-  let schema = cloneDeep(source);
-  for (let input of Object.values(schema)) {
+  for (let input of Object.values(source)) {
     if (!("value" in input)) input.value = "";
     if (!("errors" in input)) input.errors = [];
   }
-  return schema
+  return source;
 };
 
 export const useForme = source => {

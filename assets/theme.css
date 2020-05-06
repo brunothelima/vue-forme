@@ -1,4 +1,3 @@
-/* Light Theme */
 .forme {	
 	/* Font props */
 	--forme-gutter: 16px;
@@ -25,4 +24,6 @@
 	--forme-color-x-9: #F2F3F5;
 	--forme-color-x-10: #F7F8F9;
   --forme-color-x-11: #FFFFFF;
+
+   font-family: "Helvetica Neue";
 }

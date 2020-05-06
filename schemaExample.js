@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-import { createForme } from "@/composables/useForme";
-import { required, minLength } from '@/validators'
-=======
-import { createForme } from "@/composables/useForme.js";
-import { required } from "@/lib/validators.js";
->>>>>>> origin/basic-ui
+import { createForme } from "./composables/useForme.js";
+import { required } from "./validators/index.js";
 
 const schema = createForme({
   inputText: {
@@ -45,6 +40,15 @@ const schema = createForme({
   inputTextarea: {
     type: "textarea",
     label: "Textarea input",
+    validations: { required },
+    onInput: (ev, schema) => console.log(ev, schema)
+  },
+  inputRange: {
+    type: "range",
+    label: "Range input",
+    min: 0,
+    max: 40,
+    step: 2,
     validations: { required },
     onInput: (ev, schema) => console.log(ev, schema)
   },

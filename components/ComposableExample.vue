@@ -16,8 +16,8 @@
 
 <script>
 import { toRefs } from "vue";
-import { useForme, createForme } from "@/composables/useForme";
-import { required, minLength } from "@/validators";
+import { useForme, createForme } from "../composables/useForme.js";
+import { required, minLength } from "../validators/index.js";
 
 const mySchema = createForme({
   username: {

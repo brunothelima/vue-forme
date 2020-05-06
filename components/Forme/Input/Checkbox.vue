@@ -18,3 +18,13 @@ export default {
   props: ["name", "value", "title", "disabled", "readonly"]
 };
 </script>
+
+<style>
+.input-checkbox {
+  display: flex;
+  align-items: baseline;
+}
+.input-checkbox input {
+  margin-right: max(1em, 8px);
+}
+</style>

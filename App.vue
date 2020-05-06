@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import ComponentExample from "@/components/ComponentExample.vue";
-import ComposableExample from "@/components/ComposableExample.vue";
+import ComponentExample from "./components/ComponentExample.vue";
+import ComposableExample from "./components/ComposableExample.vue";
 
 export default {
   components: {
