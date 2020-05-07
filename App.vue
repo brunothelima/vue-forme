@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import { defineComponent } from "vue";
 import ComponentExample from "./components/ComponentExample.vue";
 import ComposableExample from "./components/ComposableExample.vue";
 
