@@ -1,6 +1,6 @@
-import isUrl from 'validator/lib/isUrl';
+import isURL from 'validator/es/lib/isURL';
 
 export default {
   message: "Url format invalid",
-  handler: value => isUrl(value)
+  handler: value => isURL(value)
 };

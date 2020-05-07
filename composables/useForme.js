@@ -79,9 +79,9 @@ export const useForme = source => {
       for (let key in validations) {
         let { handler, message } = validations[key];
 
-        let response = await handler(value);
+        let error = await handler(value);
 
-        if (!response) {
+        if (error) {
           input.errors.push(message);
         }
       }

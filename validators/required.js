@@ -1,4 +1,4 @@
-import isEmpty from 'validator/lib/isEmpty';
+import isEmpty from 'validator/es/lib/isEmpty';
 
 export default {
   message: "This input is required",
