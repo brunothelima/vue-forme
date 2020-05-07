@@ -1,4 +1,6 @@
+import isEmpty from 'validator/lib/isEmpty';
+
 export default {
   message: "This input is required",
-  handler: value => value != '' && value != null && value != undefined,
+  handler: value => isEmpty(value)
 };
