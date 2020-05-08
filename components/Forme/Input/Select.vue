@@ -15,8 +15,9 @@ export default {
   props: ["name", "value", "options", "placeholder", "disabled", "readonly"],
   setup(props) {
     const selected = computed(() => {
+      if (!props.value) return null;
       let query = option => option.value.toString() === props.value;
-      return props.options.find(query)?.title;
+      return props.options.find(query).title;
     });
 
     return {
@@ -69,6 +70,8 @@ select {
   left: 0; top: 0;
   width: 100%;
   height: 100%;
+
+  cursor: pointer;
 }
 
 .input-select__selected,
