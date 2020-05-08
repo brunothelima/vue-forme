@@ -2,7 +2,7 @@
   <form @submit="onSubmitHandler" class="forme">
     <pre>data: {{data}}</pre>
     <br />
-    <field
+    <Field
       v-for="[name, input] in entries"
       :key="input.name"
       :id="`${name}Id`"
@@ -15,7 +15,7 @@
         v-bind="input"
         @input="onInputHandler"
       />
-    </field>
+    </Field>
     <slot />
   </form>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <div class="input-text">
+  <div class="input-range">
     <input
       type="range" 
       :name="name" 

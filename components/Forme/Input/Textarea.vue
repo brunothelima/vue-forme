@@ -27,12 +27,10 @@ textarea {
 
   height: 10em;
   padding: 1em;
-  
+
   box-sizing: border-box;
   border-radius: var(--forme-border-radius);
-  border: 
-    var(--forme-border-width) 
-    var(--forme-border-style) 
+  border: var(--forme-border-width) var(--forme-border-style)
     var(--forme-color-x-8);
 
   background-color: var(--forme-color-x-11);

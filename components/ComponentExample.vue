@@ -6,7 +6,6 @@
 
 <script>
 import Forme from "./Forme/index.vue";
-// Schemas can also be imported as .js files
 import schema from "../schemaExample.js";
 
 export default {

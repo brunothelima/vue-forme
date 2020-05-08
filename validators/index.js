@@ -15,6 +15,7 @@ export {
   equals,
   matches,
   numeric,
+  between,
   required,
   maxLength,
   minLength,

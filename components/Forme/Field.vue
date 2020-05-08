@@ -31,7 +31,7 @@ export default {
   flex-flow: column;
   align-items: flex-start;
   padding: 1em 0 0 1em;
-  margin: 0.5em 1em;
+  margin: 0.5em 0 0.5em 1em;
   
   border-bottom: var(--forme-border-width)  var(--forme-border-style) var(--forme-color-error);
   border-left: var(--forme-border-width)  var(--forme-border-style) var(--forme-color-error);

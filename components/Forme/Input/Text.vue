@@ -1,21 +1,21 @@
 <template>
   <div class="input-text">
     <input
-      :type="type" 
-      :name="name" 
+      :type="type"
+      :name="name"
       :id="`${name}Id`"
-      :value="value" 
+      :value="value"
       :disabled="disabled"
       :readonly="readonly"
       :placeholder="placeholder"
-    />  
+    />
   </div>
 </template>
 
 <script>
 export default {
   props: ["name", "value", "type", "placeholder", "disabled", "readonly"]
-}
+};
 </script>
 
 <style scoped>
@@ -28,12 +28,10 @@ input {
 
   height: max(4vh, 3em);
   padding: 0 1em;
-  
+
   box-sizing: border-box;
   border-radius: var(--forme-border-radius);
-  border: 
-    var(--forme-border-width) 
-    var(--forme-border-style) 
+  border: var(--forme-border-width) var(--forme-border-style)
     var(--forme-color-x-8);
 
   background-color: var(--forme-color-x-11);

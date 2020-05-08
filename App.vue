@@ -1,11 +1,7 @@
 <template>
   <div class="vue-forme">
-    <div class="component">
-      <component-example />
-    </div>
-    <div class="composable">
-      <composable-example />
-    </div>
+    <ComponentExample />
+    <!-- <ComposableExample /> -->
   </div>
 </template>
 
