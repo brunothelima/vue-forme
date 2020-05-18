@@ -5,8 +5,12 @@ import { reactive, computed } from "vue";
  */
 export const createForme = source => {
   for (let input of Object.values(source)) {
-    if (!("value" in input)) input.value = "";
-    if (!("errors" in input)) input.errors = [];
+    if (!("value" in input)) {
+      input.value = "";
+    }
+    if (!("errors" in input)) {
+      input.errors = [];
+    }
   }
   return source;
 };
@@ -18,11 +22,10 @@ export const useForme = source => {
   /** 
    * Computed variable, containing a reduced object 
    * with the given schema inputs names as keys and 
-   * the inputs current values as the keys values
-   * 
-   * Example:
+   * the inputs current values as the keys values,
    * 
    * console.log(data); 
+   * 
    * // { 
    * //   name: 'My Name', 
    * //   email: 'my@email.com', 
@@ -38,11 +41,10 @@ export const useForme = source => {
   /** 
    * Computed variable, containing a reduced object 
    * with only the given schema inputs names as keys and
-   * and the inputs current errors array as their values
-   * 
-   * Example:
+   * and the inputs current errors array as their values,
    * 
    * console.log(errors);
+   * 
    * // { 
    * //   name: ['Required input', ...], 
    * //   email: ['Invalid e-mail', ... ], 
@@ -71,11 +73,11 @@ export const useForme = source => {
   const validate = async () => {
     for (let name in schema) {
       let input = schema[name];
-      
+
       let { value, validations } = input;
-      
-      input.errors = []; // Reseting the input errors array
- 
+
+      input.errors = [];
+
       for (let key in validations) {
         let { handler, message } = validations[key];
 

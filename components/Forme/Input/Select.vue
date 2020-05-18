@@ -1,7 +1,7 @@
 <template>
   <div class="input-select">
     <select :id="`${name}Id`" :name="name" :value="value" :disabled="disabled" :readonly="readonly">
-      <option v-for="option in options" :key="option" :value="option.value">{{option.title}}</option>
+      <option v-for="option in options" :key="option" :value="option.value">{{option.label}}</option>
     </select>
     <div class="input-select__selected" v-if="selected">{{ selected }}</div>
     <div class="input-select__placeholder" v-else>{{ placeholder || 'Select an option' }}</div>
@@ -16,8 +16,8 @@ export default {
   setup(props) {
     const selected = computed(() => {
       if (!props.value) return null;
-      let query = option => option.value.toString() === props.value;
-      return props.options.find(query).title;
+      let query = ({ value }) => String(value) === props.value;
+      return props.options.find(query).label;
     });
 
     return {

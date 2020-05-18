@@ -1,4 +1,4 @@
-import isCreditCard from 'validator/es/lib/isCreditCard';
+import isCreditCard from 'validator';
 
 export default {
   message: "Invalid credit card number",

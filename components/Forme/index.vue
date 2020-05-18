@@ -9,12 +9,7 @@
       :label="input.label"
       :errors="input.errors"
     >
-      <component
-        :is="getComponentByType(input.type)"
-        :name="name"
-        v-bind="input"
-        @input="onInputHandler"
-      />
+      <component :is="`input-${input.type}`" :name="name" v-bind="input" @input="onInputHandler" />
     </Field>
     <slot />
   </form>
@@ -26,21 +21,21 @@ import { useForme } from "../../composables/useForme.js";
 import Field from "./Field.vue";
 import "../../assets/theme.css";
 
-// vue-forme ui components
-const formeComponents = {
+// Forme elements components
+const UIComponents = {
   "input-text": defineAsyncComponent(() => import("./Input/Text.vue")),
-  "input-select": defineAsyncComponent(() => import("./Input/Select.vue")),
   "input-radio": defineAsyncComponent(() => import("./Input/Radio.vue")),
+  "input-range": defineAsyncComponent(() => import("./Input/Range.vue")),
+  "input-select": defineAsyncComponent(() => import("./Input/Select.vue")),
   "input-checkbox": defineAsyncComponent(() => import("./Input/Checkbox.vue")),
-  "input-textarea": defineAsyncComponent(() => import("./Input/Textarea.vue")),
-  "input-range": defineAsyncComponent(() => import("./Input/Range.vue"))
+  "input-textarea": defineAsyncComponent(() => import("./Input/Textarea.vue"))
 };
 
 export default {
   props: ["schema"],
   components: {
     Field,
-    ...formeComponents
+    ...UIComponents
   },
   setup(props, context) {
     const { schema, data, validate } = useForme(props.schema);
@@ -48,20 +43,10 @@ export default {
     const entries = computed(() => Object.entries(schema));
 
     /**
-     * Checks if the ui has a matching component for the input type
-     * if not, returns an input-text as default.
-     */
-    const getComponentByType = type => {
-      return `input-${type}` in formeComponents
-        ? `input-${type}`
-        : "input-text";
-    };
-
-    /**
      * This function updates the schema with the new input value
      * and calls onInput callback if one is given in the schema
      */
-    const onInputHandler = ev => {
+    const onInputHandler = ev => {      
       const { name, value } = ev.target;
 
       // Updating the schema input value
@@ -89,7 +74,6 @@ export default {
     return {
       onInputHandler,
       onSubmitHandler,
-      getComponentByType,
       entries,
       data
     };

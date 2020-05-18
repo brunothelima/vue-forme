@@ -1,4 +1,4 @@
-import isURL from 'validator/es/lib/isURL';
+import isURL from 'validator';
 
 export default {
   message: "Url format invalid",

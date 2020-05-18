@@ -22,34 +22,31 @@ export default {
 
 <style>
 input[type=range] {
-  -webkit-appearance: none;
   width: 100%;
-  margin: 9px 0;
-}
-input[type=range]:focus {
+  margin: 6px 0;
+  -webkit-appearance: none;
   outline: none;
 }
 input[type=range]::-webkit-slider-runnable-track {
   width: 100%;
-  height: 8px;
+  height: 0.33em;
+  box-shadow: 0 0 0.1em var(--forme-color-x-4), 0 0 0.1em var(--forme-color-x-3);
+  background: var(--forme-color-x-8);
+  border-radius: 0.33em;
   cursor: pointer;
-  box-shadow: 1px 1px 1px #babfc8, 0px 0px 1px #c8ccd3;
-  background: #e5e7eb;
-  border-radius: 8px;
-  border: 0px solid #e5e7eb;
+}
+input[type=range]:focus::-webkit-slider-thumb {
+  background: var(--forme-color-x-9);
 }
 input[type=range]::-webkit-slider-thumb {
-  box-shadow: 1px 1px 1px #babfc8, 0px 0px 1px #c8ccd3;
-  border: 1px solid #e5e7eb;
-  height: 26px;
-  width: 26px;
-  border-radius: 15px;
-  background: #ffffff;
+  width: 1.8em;
+  height: 1.8em;
+  margin-top: -8px;
+  background: var(--forme-color-x-11);
+  border: 1px solid var(--forme-color-x-6);
+  border-radius: 0.9em;
+  box-shadow: 0 0 0.1em var(--forme-color-x-5), 0 0 0.1em var(--forme-color-x-6);
   cursor: pointer;
   -webkit-appearance: none;
-  margin-top: -9px;
-}
-input[type=range]:focus::-webkit-slider-runnable-track {
-  background: #e8eaed;
 }
 </style>

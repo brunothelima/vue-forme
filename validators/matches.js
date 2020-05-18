@@ -1,4 +1,4 @@
-import matches from 'validator/es/lib/matches';
+import matches from 'validator';
 
 export default (pattern) => ({
   message: `Invalid format`,

@@ -1,4 +1,4 @@
-import isNumeric from 'validator/es/lib/isNumeric';
+import isNumeric from 'validator';
 
 export default {
   message: "Invalid numeric value",

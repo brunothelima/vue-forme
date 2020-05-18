@@ -1,16 +1,16 @@
 <template>
-  <vue-forme :schema="schema" @success="onSuccess">
+  <Forme :schema="schema" @success="onSuccess">
     <button>Send</button>
-  </vue-forme>
+  </Forme>
 </template>
 
 <script>
 import Forme from "./Forme/index.vue";
-import schema from "../schemaExample.js";
+import schema from "../schemas/example.js";
 
 export default {
   components: {
-    "vue-forme": Forme
+    Forme
   },
   setup() {
     const onSuccess = ({ ev, data }) => {

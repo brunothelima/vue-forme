@@ -10,7 +10,7 @@
         :readonly="readonly"
         :checked="option.value == value"
       />
-      <label :for="`${name}Id:${index}`">{{option.title}}</label>
+      <label :for="`${name}Id:${index}`">{{option.label}}</label>
     </div>
   </div>
 </template>

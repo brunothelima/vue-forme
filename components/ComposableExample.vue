@@ -14,7 +14,7 @@
   </form>
 </template>
 
-<script>
+<script lang="ts">
 import { toRefs } from "vue";
 import { useForme, createForme } from "../composables/useForme.js";
 import { required, minLength } from "../validators/index.js";
